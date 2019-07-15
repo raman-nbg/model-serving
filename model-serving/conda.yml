@@ -1,0 +1,11 @@
+name: model-server-env
+channels:
+  - defaults
+dependencies:
+  - pip=19.1.1=py37_0
+  - pip:
+    - confuse==1.0.0
+    - kafka-python==1.4.6
+    - pyyaml==5.1.1
+prefix: /anaconda3/envs/model-server-env
+
