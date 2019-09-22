@@ -1,6 +1,8 @@
 FROM continuumio/miniconda3
 ADD src/model_serving/ .
 ADD conda.yml /
+ADD config_docker_dev.yaml ./config_dev.yaml
+
 RUN conda env create -f conda.yml python=3.7
 
 # Pull the environment name out of the environment.yml

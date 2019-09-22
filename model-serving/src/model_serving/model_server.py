@@ -1,5 +1,5 @@
 from request import request
-from common import logging
+import logging
 
 _logger = logging.get_logger(__name__)
 

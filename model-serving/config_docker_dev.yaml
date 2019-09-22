@@ -1,0 +1,4 @@
+kafka:
+  topic: graduate-admission-requests
+  group_id: model-server
+  bootstrap_servers: 10.243.114.177:9092

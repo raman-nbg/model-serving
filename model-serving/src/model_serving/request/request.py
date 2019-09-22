@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
-from common import configuration, logging
+import logging
+import configuration
 import json
 
 _config_template = {
@@ -9,8 +10,7 @@ _config_template = {
         'bootstrap_servers': str
     }
 }
-_config = configuration.get_configuration(__name__).get(_config_template)
-
+_config = configuration.get_configuration(_config_template)
 _logger = logging.get_logger(__name__)
 
 
