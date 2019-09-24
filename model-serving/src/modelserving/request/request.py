@@ -25,7 +25,6 @@ class RequestConsumer:
                 if message is not None:
                     _logger.info("Got message: " + str(message.value))
 
-
     @staticmethod
     def _message_deserializer(value):
         if value is None:

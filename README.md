@@ -11,7 +11,6 @@ For the blueprint we will use the [Graduate Admission Dataset from Kaggle](https
 - Install Anaconda
 - Install Docker
 - Install Docker-Compose (only on Linux)
-- [Install and run Kafka locally](https://kafka.apache.org/quickstart)
 
 ## Training
 ```bash
@@ -27,10 +26,9 @@ The new model will be stored at `models/graduate-admissions/linear-regression-v1
 ## Serving
 
 ### Setup
-- Start Zookeeper `bin/zookeeper-server-start.sh config/zookeeper.properties`
-- Start Kafka `bin/kafka-server-start.sh config/server.properties`
-- Create Kafka Topic for the requests (input) `bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic graduate-admission-requests`
-- Create Kafka Topic for the responses (scores) `bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic graduate-admission-scores`
+Start Kafka cluster including Zookeeper, Kafka REST Proxy, Schema Registry 
+and Admin Web UIs. See 
+[infrastructure/kafka/README.md](infrastructure/kafka/README.md) for details.
 
 ### Build
 ```bash
