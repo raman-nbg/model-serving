@@ -1,9 +1,9 @@
-name: model-server-env
+name: serving
 channels:
   - defaults
 dependencies:
-  - pip=19.1.1=py37_0
+  - pip=19.1.1
   - pip:
-    - confuse==1.0.0
     - kafka-python==1.4.6
     - pyyaml==5.1.1
+prefix: ./envs

@@ -13,12 +13,19 @@ For the blueprint we will use the [Graduate Admission Dataset from Kaggle](https
 - Install Docker-Compose (only on Linux)
 
 ## Training
+### Build
 ```bash
-# create the conda environment with all dependencies
-conda env create -f training/conda.yml
+cd training
+conda env create -f environment.yml --prefix ./envs
+conda activate ./envs
+python setup.py [develop|install]
+```
 
-# run training script
-python training/graduate_admission_training.py
+### Run
+```bash
+cd training
+conda activate ./envs
+run_training
 ```
 
 The new model will be stored at `models/graduate-admissions/linear-regression-v1.pkl`
@@ -33,11 +40,15 @@ and Admin Web UIs. See
 ### Build
 ```bash
 cd model-serving
+conda env create -f environment.yml --prefix ./envs
+conda activate ./envs
+python setup.py [develop|install]
 docker build -t model-server .
 ```
 
 ### Run
 ```bash
+conda activate ./envs
 docker run model-server
 ```
 
@@ -45,19 +56,13 @@ docker run model-server
 Each subproject contains its own Conda environment file named `conda.yml`. You 
 can apply the configuration using the following commands:
 ```bash
-conda env create -f [subfolder]/conda.yml
-conda activate [env-name]
+cd [subfolder]
+conda env create -f environment.yml --prefix ./envs
+conda activate ./[env-name]
 ```
 You can find the name of the environment in the first line of the yaml file.
 
 ### Adding new dependencies
-Just install the dependency using Conda. After that you have to export the changed
-configuration to the yaml file using `conda env export > conda.yml`.
-
-### Adding pip dependencies
-If you want to add dependencies using pip you must not use your global pip installation.
-Instead use pip from your activated conda environment.
-```bash
-cd /anaconda3/envs/[active-env-name]/bin
-./pip install [dependency]
-```
+Just add the dependency to the `environment.yml` manually. Afterwards you
+can import the new dependency using 
+`conda env update -f environment.yml --prefix ./envs`

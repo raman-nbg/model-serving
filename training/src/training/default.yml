@@ -1,0 +1,5 @@
+input-dataset: ~/dev/github/model-serving/data/graduate-admissions/Admission_Predict_Ver1.1.csv
+output-model-file: /Users/raman/dev/github/model-serving/models/graduate-admissions/linear-regression-v1.pkl
+training:
+  test-size: 0.2
+  random-state: 0
